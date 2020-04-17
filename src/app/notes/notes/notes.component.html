@@ -1,0 +1,57 @@
+<ngx-spinner></ngx-spinner>
+<div class="notesPage">
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">Notes</span>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-12 pl-0">
+                <div class="noteList"> 
+                        <ul class="pl-0" *ngIf="notes.length > 0">
+                            <li class="noteItem" *ngFor="let note of notes; let i = index">
+                                <div class="info">
+                                    <h5>{{note.title}}</h5>
+                                    <p>{{note.description}}</p>
+                                </div>
+                                <div class="action">
+                                    <a class="actionBtn" (click)="deleteNote(note.id)"><i class="fa fa-times"></i></a>
+                                    <a class="actionBtn" (click)="editNote(note)"><i class="fa fa-pencil"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-12">
+                <div class="noteForm mt-3">
+                    <form class="form" role="form" #noteFrm="ngForm" (ngSubmit)="noteFrm.form.valid && addEditNote(noteFrm)" novalidate >
+                        <h3 class="text-center text-info" *ngIf="selectedNote.id == undefined">Add Note</h3>
+                        <h3 class="text-center text-info" *ngIf="selectedNote.id != undefined">Edit Note</h3>
+                        <div class="form-group">
+                            <label for="title" class="text-info">Title:</label><br>
+                            <input type="text" name="title" id="title"  class="form-control" [(ngModel)]="noteDataObj.title" #title="ngModel" required>
+                            <div *ngIf="title.invalid && (title.dirty || title.touched || noteFrm.submitted)" class="error_msg">
+                                <div *ngIf="title.errors.required">
+                                  Title is mandatory
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description" class="text-info">Description:</label><br>
+                            <textarea name="description" id="description" class="form-control" [(ngModel)]="noteDataObj.description" #description ="ngModel" required></textarea>
+                            <div *ngIf="description.invalid && (description.dirty || description.touched || noteFrm.submitted)" class="error_msg">
+                                <div *ngIf="description.errors.required">
+                                  Description is mandatory
+                                </div>
+                              </div>
+                        </div>
+                        <div class="form-group text-right">
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                        </div>
+                    </form>
+                </div>
+    
+            </div>
+        </div>
+        
+    </div>
+</div>

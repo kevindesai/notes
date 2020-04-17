@@ -1,0 +1,22 @@
+.container{
+    border: 1px solid #c1bcbc;
+}
+.noteList{
+    height: 100vh;
+    border-right: 1px solid #c1bcbc;
+    .noteItem{
+        border: 1px solid #f3f3f3;
+        border-right: none;
+        border-left: none;
+        padding: 10px;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        .actionBtn{
+            color: #b5b2b2;
+            padding: 0px 4px;
+            cursor: pointer;
+        }
+    }
+}
+
