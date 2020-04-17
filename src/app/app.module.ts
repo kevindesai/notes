@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { CommonService } from './shared/services';
 import { AuthGuard } from './shared/guard';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 
@@ -27,7 +28,8 @@ import { AuthGuard } from './shared/guard';
     AppRoutingModule,
     FormsModule,
     ToastrModule.forRoot(),
-    HttpClientModule 
+    HttpClientModule,
+    NgxSpinnerModule 
   ],
   providers: [CommonService, AuthGuard],
   bootstrap: [AppComponent]
